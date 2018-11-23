@@ -1,13 +1,15 @@
 import { setTimeParameter } from './app/Date'
 import templateWeather from './app/TemplateWeather'
 
-const waitTime = 30 * 60 * 1000;
-
 window.addEventListener('load', (e) => {
 	setTimeParameter;
 	templateWeather();
 
-	setTimeout(() => {
-		templateWeather();
-	}, waitTime);
+	setInterval(function(){
+		const date = new Date();
+
+		date.getMinutes() === 30 || date.getMinutes() === 0 ? templateWeather() : null
+
+	}, 1000);
+
 });
