@@ -5,5 +5,7 @@
 /node_modules
 /dist
 /.cache
+dist
+/dist/
 
 package-lock.json
