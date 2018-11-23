@@ -4,20 +4,59 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-	<link rel="stylesheet" href="css/style.css">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-	<script>
-		document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-			':35729/livereload.js?snipver=1"></' + 'script>')
-	</script>
-
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<div class="container">
+	<div class="row is-flex">
+		<div class="col s12 m4 m-auto">
+			<div class="card blue lighten-5">
+				<div class="card-content">
+					<span class="card-title">Погода в Харькове</span>
+					<p>
+						<span class="Day">День недели</span>
+						<br />
+						<span class="text"></span> | <time>00:00:00 pm|am</time>
+					</p>
+					<br />
+					<div class="row">
+						<div class="col s6">
+							<div class="row valign-wrapper">
+								<div class="col s6">
+									<img class="circle responsive-img icon">
+								</div>
+								<div class="col s6">
 
-testsdfsdf
+									<div class="row">
+										<div class="black-text valign-wrapper">
+											<h4 class="temp">
+												0
+											</h4> °C
+										</div>
+									</div>
 
-<script src="js/init.js"></script>
+								</div>
+							</div>
+						</div>
+						<div class="col s6">
+							<ul>
+								<li>Осадки: <span class="precipitation">0</span>%</li>
+								<li>Чувствуеться: <span class="feel">0</span> °C</li>
+								<li>Влажность:  <span class="humidity">0</span>%</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<script src="index.js"></script>
+
 </body>
 </html>

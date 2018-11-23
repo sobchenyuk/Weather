@@ -1,25 +1,21 @@
 {
   "name": "Weather",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sobchenyuk/Weather.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sobchenyuk/Weather/issues"
-  },
-  "homepage": "https://github.com/sobchenyuk/Weather#readme",
+  "repository": "https://github.com/sobchenyuk/Weather.git",
+  "author": "Andrey Sobchenyuk <andrey.s.itlt@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "connect": "^3.6.6",
-    "livereload": "^0.7.0",
-    "node-static": "^0.7.11"
+    "axios": "^0.18.0",
+    "parcel-bundler": "^1.10.3"
+  },
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-stage-3": "^6.24.1"
   }
 }

@@ -1,0 +1,11 @@
+html, body, .container, .row {
+  height: 100%;
+}
+.is-flex {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.m-auto {
+  margin: auto;
+}
