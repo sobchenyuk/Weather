@@ -10,10 +10,17 @@ const setTimeParameter = {
 	time,
 	day,
 	date,
+	watchNumbers(number) {
+		let result = number;
+		if(number < 10) {
+			result = `0${number}`
+		}
+		return result;
+	},
 	setTime() {
 		setInterval(()=> {
 			const date = new Date();
-			this.time.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+			this.time.innerHTML = `${date.getHours()}:${this.watchNumbers(date.getMinutes())}:${this.watchNumbers(date.getSeconds())}`;
 		}, 1000);
 	},
 	dayNow(num) {

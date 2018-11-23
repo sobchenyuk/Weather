@@ -12,7 +12,6 @@ const h =  document.querySelector('.humidity');
 axios.get('//api.apixu.com/v1/current.json?key=ed951695db6d4781a52104049182311&q=Kharkiv&lang=uk')
 	.then(function (response) {
 		// handle success
-		console.log(response.data);
 		const current = response.data.current;
 
 		const {
