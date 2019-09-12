@@ -1,15 +1,18 @@
-import { setTimeParameter } from './app/Date'
+import setTimeParameter from './app/Date'
 import templateWeather from './app/TemplateWeather'
 
 window.addEventListener('load', (e) => {
-	setTimeParameter;
+	const time = document.querySelector('time');
+	const day = document.querySelector('.Day');
+
+	setTimeParameter.init(time, day);
 	templateWeather();
 
-	setInterval(function(){
-		const date = new Date();
-
-		date.getMinutes() === 30 || date.getMinutes() === 0 ? templateWeather() : null
-
-	}, 1000);
+	// setInterval(function(){
+	// 	const date = new Date();
+	//
+	// 	date.getMinutes() === 30 || date.getMinutes() === 0 ? templateWeather() : null
+	//
+	// }, 1000);
 
 });
