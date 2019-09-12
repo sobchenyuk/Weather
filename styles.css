@@ -1,6 +1,22 @@
-html, body, .container, .row {
-  height: 100%;
+.weatherWidget__header {
+  padding-bottom: 100px;
 }
+
+.weatherWidget__footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.weatherWidget__footer-social {
+  display: flex;
+  font-size: 22px;
+}
+
+.footer-social__item + .footer-social__item {
+  margin-left: 15px;
+}
+
 .is-flex {
   display: flex;
   justify-content: center;
@@ -23,7 +39,30 @@ html, body, .container, .row {
 #upgrade {
   display: block;
 }
+@media (max-width: 700px) {
+  .weatherWidget__header {
+    padding-bottom: 25px;
+  }
 
+  .weatherWidget__footer {
+    position: static;
+  }
+
+  .weatherWidget__header-nav {
+    display: flex;
+  }
+
+  .weatherWidget__header-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .weatherWidget__header-navbar {
+    height: auto;
+  }
+}
 @media (max-width: 600px) {
   .mobile-text-center {
     text-align: center;
