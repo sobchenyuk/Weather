@@ -1,60 +1,61 @@
 const week = [
-	'Воскресенье',
-	'Понедельник',
-	'Вторник',
-	'Среда',
-	'Четверг',
-	'Пятница',
-	'Суббота'
+    'Воскресенье',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота'
 ];
 
 const setTimeParameter = {
-	week,
-	time: [],
-	day: [],
-	date: new Date(),
-	data_delay: 1000,
-	watchNumbers(number) {
-		return number < 10 ? `0${number}` : number;
-	},
-	timeTemplate(h, m, s) {
-		return `${this.watchNumbers(h)}:${this.watchNumbers(m)}:${this.watchNumbers(s)}`;
-	},
-	setTime() {
+    week,
+    time: [],
+    day: [],
+    date: new Date(),
+    data_delay: 1000,
+    watchNumbers(number) {
+        return number < 10 ? `0${number}` : number;
+    },
+    timeTemplate(h, m, s) {
+        return `${h}:${this.watchNumbers(m)}:${this.watchNumbers(s)}`;
+    },
+    setTime(timeSelector) {
 
-		this.time.innerHTML = this.timeTemplate(
-			this.date.getHours(),
-			this.date.getMinutes(),
-			this.date.getSeconds(),
-		);
+        this.time.innerHTML = this.timeTemplate(
+            this.date.getHours(),
+            this.date.getMinutes(),
+            this.date.getSeconds(),
+        );
 
-		setInterval(()=> {
+        setInterval(() => {
 
-			const date = new Date();
+            const date = new Date();
 
-			this.time.innerHTM = this.timeTemplate(
-				date.getHours(),
-				date.getMinutes(),
-				date.getSeconds(),
-			);
+            timeSelector.innerText = this.timeTemplate(
+                date.getHours(),
+                date.getMinutes(),
+                date.getSeconds(),
+            )
 
-		}, this.data_delay);
-	},
-	dayNow(num) {
-		return this.week[num]
-	},
-	init(timeSelector, daySelector) {
 
-		if(timeSelector && daySelector) {
-			this.time = timeSelector;
-			this.day = daySelector;
+        }, this.data_delay);
+    },
+    dayNow(num) {
+        return this.week[num]
+    },
+    init(timeSelector, daySelector) {
 
-			this.setTime();
-			this.day.innerHTML = this.dayNow(this.date.getDay());
-		} else {
-			console.error('No selectors passed DAY AND TIME !!!!')
-		}
-	}
+        if (timeSelector && daySelector) {
+            this.time = timeSelector;
+            this.day = daySelector;
+
+            this.setTime(timeSelector);
+            this.day.innerHTML = this.dayNow(this.date.getDay());
+        } else {
+            console.error('No selectors passed DAY AND TIME !!!!')
+        }
+    }
 };
 
 

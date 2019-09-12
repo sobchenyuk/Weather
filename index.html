@@ -16,19 +16,23 @@
 </head>
 <body>
 
-<div class="container">
+<div class="weatherWidget container">
 
 	<div class="row is-flex">
 
 		<div class="col s12 m8 xl5 m-auto">
 
 			<div class="grey lighten-3 app-title">
-				Обновляется каждые 30 минут
+				До автомотического обновления осталось: <span class="weatherWidget_minutes">0</span>  минут
+			</div>
+
+			<div class="progress">
+				<div class="determinate weatherWidget__progress" style="width: 0"></div>
 			</div>
 
 			<div class="card blue lighten-5 hoverable">
 
-				<div class="loader" style="display: none">
+				<div class="weatherWidget__loader fadein">
 					<div id="floatingBarsG">
 						<div class="blockG" id="rotateG_01"></div>
 						<div class="blockG" id="rotateG_02"></div>
@@ -41,7 +45,7 @@
 					</div>
 				</div>
 
-				<div class="card-content mobile-text-center" style="opacity: 1">
+				<div class="weatherWidget__content card-content mobile-text-center">
 
 					<span class="card-title">Погода в Харькове</span>
 
@@ -84,14 +88,15 @@
 					</div>
 				</div>
 
-				<a id="upgrade" class="btn green">
+				<button type="button" class="weatherWidget__btn btn green">
 					<i class="material-icons right">cloud</i>
 					Обновить
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>
 </div>
+
 <script src="index.js"></script>
 
 </body>
