@@ -1,7 +1,7 @@
 import debounce from 'lodash/debounce'
 import setTimeParameter from './app/Date'
 import templateWeather from './app/TemplateWeather'
-import { CalculationProgress } from './app/CalculationProgress'
+import { CalculationProgress, CalculationMinutes } from './app/CalculationProgress'
 
 const button = document.querySelector('.weatherWidget__btn');
 const loader = document.querySelector('.weatherWidget__loader');
@@ -41,7 +41,7 @@ window.addEventListener('load', (e) => {
 		}
 
 		progress.style.cssText = `width: ${CalculationProgress(date.getMinutes().toString())}%`;
-		// minutes.innerHTML = Number(`${date.getMinutes().toString()}`) - (Number(`${date.getMinutes().toString()}`) - 30);
+		minutes.innerHTML = `${CalculationMinutes(date.getMinutes().toString())}`
 
 	}, 1000);
 

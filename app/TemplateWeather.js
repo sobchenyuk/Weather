@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const KEY_API = 'ed951695db6d4781a52104049182311';
 const CITY = 'Kharkiv';
-const LANG = 'uk';
+const LANG = 'ru';
 
 const generated = data => {
 
@@ -13,7 +13,7 @@ const generated = data => {
     const h = document.querySelector('.humidity');
 
     // handle success
-    const current = data.current;
+    const { current } = data;
 
     const {
         feelslike_c, temp_c, humidity, condition
