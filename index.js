@@ -1,16 +1,19 @@
-import debounce from 'lodash/debounce'
 import setTimeParameter from './app/Date'
-import templateWeather from './app/TemplateWeather'
-import { CalculationProgress, CalculationMinutes } from './app/CalculationProgress'
+import changeCity from './app/ChangeCity'
+import Cookies from 'js-cookie'
 
-const button = document.querySelector('.weatherWidget__btn');
+import { templateWeather } from './app/TemplateWeather'
+import { CalculationProgress, CalculationMinutes } from './app/Utils'
+
 const loader = document.querySelector('.weatherWidget__loader');
 const content = document.querySelector('.weatherWidget__content');
 const progress = document.querySelector('.weatherWidget__progress');
 const minutes = document.querySelector('.weatherWidget_minutes');
 
-const getTemplateWeather = () => {
-	templateWeather()
+const Default_City_ID = 18;
+
+const getTemplateWeather = async () => {
+	await templateWeather()
 		.then(()=> {
 			loader.classList.contains('fadein') && loader.classList.remove('fadein');
 			loader.style.display = 'none';
@@ -22,9 +25,12 @@ window.addEventListener('load', (e) => {
 	const time = document.querySelector('time');
 	const day = document.querySelector('.Day');
 
-	setTimeParameter.init(time, day);
 
-	getTemplateWeather();
+	getTemplateWeather().then( ()=> {
+		setTimeParameter.init(time, day);
+
+		changeCity.init();
+	});
 
 	setInterval(() => {
 		const date = new Date();
@@ -46,15 +52,3 @@ window.addEventListener('load', (e) => {
 	}, 1000);
 
 });
-
-const update = () => {
-	loader.classList.add('fadein');
-	loader.style.display = 'block';
-	content.style.opacity = '0';
-
-	setTimeout(() => {
-		getTemplateWeather()
-	}, 500)
-};
-
-button.addEventListener('click', debounce(update, 200));

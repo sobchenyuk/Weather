@@ -1,12 +1,4 @@
-const week = [
-    'Воскресенье',
-    'Понедельник',
-    'Вторник',
-    'Среда',
-    'Четверг',
-    'Пятница',
-    'Суббота'
-];
+import { week } from "./constant";
 
 const setTimeParameter = {
     week,

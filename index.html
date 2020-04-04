@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WeatherWidget</title>
+    <title>Погода в областных городах Украины</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,7 +19,9 @@
 <header class="weatherWidget__header">
 	<nav class="weatherWidget__header-navbar">
 		<div class="nav-wrapper weatherWidget__header-nav">
-			<a href="http://optimist.biz.ua/" target="_blank" class="brand-logo">"OPTIMIST"</a>
+			<a href="http://optimist.biz.ua/" target="_blank" class="brand-logo">
+				"Погода в областных городах Украины"
+			</a>
 			<ul class="right weatherWidget__header-menu">
 				<li><a href="http://portfolio.optimist.biz.ua/" target="_blank" rel="nofollow noreferrer noopener">Portfolio</a></li>
 			</ul>
@@ -34,7 +36,18 @@
 		<div class="col s12 m8 xl5 m-auto">
 
 			<div class="grey lighten-3 app-title">
-				До автомотического обновления осталось: <span class="weatherWidget_minutes">0</span>  минут
+				До обновления погоды осталось: <span class="weatherWidget_minutes">0</span>  минут
+			</div>
+
+			<div class="weatherWidget__change-city">
+				<div class="row">
+					<div class="input-field col s12">
+						<select class="js-select">
+							<option value="Kharkiv">Город Харьков</option>
+						</select>
+						<label>Выберете облосной город</label>
+					</div>
+				</div>
 			</div>
 
 			<div class="progress">
@@ -72,10 +85,13 @@
 					<div class="row">
 
 						<div class="col s12 m6">
+
 							<div class="row valign-wrapper mobile-text-center mobile-block">
+
 								<div class="col s12 m6">
 									<img class="circle responsive-img icon">
 								</div>
+
 								<div class="col s12 m6">
 
 									<div class="row">
@@ -98,17 +114,13 @@
 						</div>
 					</div>
 				</div>
-
-				<button type="button" class="weatherWidget__btn btn green">
-					<i class="material-icons right">cloud</i>
-					Обновить
-				</button>
 			</div>
+
 		</div>
 	</div>
 </div>
 
-<footer class="weatherWidget__footer page-footer">
+<footer class="weatherWidget__footer page-footer" style="display: none">
 	<div class="container">
 		<div class="row">
 			<div class="col l6 s12">
@@ -166,13 +178,17 @@
 	</div>
 	<div class="footer-copyright">
 		<div class="container">
-			© 2019 Web Studio "OPTIMIST"
+			© 2010 Web Studio "OPTIMIST"
 			<a class="grey-text text-lighten-4 right" href="http://optimist.biz.ua/" target="_blank" rel="nofollow noreferrer noopener">
 				optimist.biz.ua
 			</a>
 		</div>
 	</div>
 </footer>
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <script src="index.js"></script>
 
