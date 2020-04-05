@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.js"
+    "build": "parcel build index.js --no-source-maps"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
