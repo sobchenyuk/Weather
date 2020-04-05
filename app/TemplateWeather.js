@@ -1,26 +1,6 @@
 import axios from 'axios';
-import { key_api, currentCity, arrCity } from "./constant";
-
-const generated = async (data, callback = () => {}) => {
-
-    const t = document.querySelector('.text');
-    const i = document.querySelector('.icon');
-    const temp = document.querySelector('.temp');
-    const feel = document.querySelector('.feel');
-    const h = document.querySelector('.humidity');
-
-    const { main: { temp:temperature, feels_like, humidity }, weather } = data;
-    const { description, icon } = weather[0];
-
-    t.innerHTML = description.toUpperCase();
-    i.src = `//openweathermap.org/img/wn/${icon}@2x.png`;
-
-    temp.innerHTML = temperature;
-    feel.innerHTML = feels_like;
-    h.innerHTML = humidity;
-
-    await callback()
-};
+import {key_api, arrCity, getDefaultCity} from "./constant";
+import { installationUpdateWeather } from './Utils'
 
 const getDataParams = async params => {
 
@@ -68,15 +48,7 @@ export const templateWeather = async () => {
             setTimeout(() => {
                 localStorage.setItem('arrayRequest', JSON.stringify(res));
 
-                const currentCityObg = res.find( elem => elem.id === currentCity.cityId );
-
-                localStorage.setItem('currentCityObg', JSON.stringify(currentCityObg));
-
-                generated(currentCityObg, () => {
-                    const cardTitle = document.querySelector('.card-title');
-
-                    cardTitle.innerHTML = `Погода в ${currentCity.name}`
-                })
+                installationUpdateWeather(getDefaultCity(), res)
 
             }, 500);
         })

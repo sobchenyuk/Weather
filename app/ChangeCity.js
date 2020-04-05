@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import { currentCity, arrCity } from './constant';
+import { installationUpdateWeather } from './Utils'
 
 class ChangeCity {
 
@@ -23,6 +24,9 @@ class ChangeCity {
         const { target: { value } } = select;
 
         Cookies.set('city_id', Number(value));
+
+        setTimeout(() => installationUpdateWeather( Number(value)), 200)
+
     }
 
     createOptions(select) {

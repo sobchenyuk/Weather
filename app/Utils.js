@@ -27,13 +27,39 @@ export const ParserParams = city_id => {
     }
 };
 
+export const generated = async data => {
 
-// const update = () => {
-//     loader.classList.add('fadein');
-//     loader.style.display = 'block';
-//     content.style.opacity = '0';
-//
-//     setTimeout(() => {
-//         getTemplateWeather()
-//     }, 500)
-// };
+    const t = document.querySelector('.text');
+    const i = document.querySelector('.icon');
+    const temp = document.querySelector('.temp');
+    const feel = document.querySelector('.feel');
+    const h = document.querySelector('.humidity');
+
+    const { main: { temp:temperature, feels_like, humidity }, weather } = data;
+    const { description, icon } = weather[0];
+
+    t.innerHTML = description.toUpperCase();
+    i.src = `//openweathermap.org/img/wn/${icon}@2x.png`;
+
+    temp.innerHTML = temperature;
+    feel.innerHTML = feels_like;
+    h.innerHTML = humidity;
+};
+
+
+export const installationUpdateWeather = async ( id, localStorageParams = null )  => {
+
+    let result = null;
+    const currentCity = ParserParams(id)['currentCity'];
+    const { cityId, name } = currentCity;
+
+    result =  !!localStorageParams ? localStorageParams : JSON.parse(localStorage.getItem('arrayRequest'));
+
+    const currentCityObg = await result.find( elem => elem.id === cityId );
+
+    await generated(currentCityObg).then( () => {
+        const cardTitle = document.querySelector('.card-title');
+
+        cardTitle.innerHTML = `Погода в ${name}`
+    })
+};

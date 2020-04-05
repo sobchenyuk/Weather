@@ -1,5 +1,7 @@
 import Cookies from "js-cookie";
 
+const defaultCityId = 18;
+
 export default {
     key_api: 'ffd85cda398bb54787d1ea0e8a643900',
 
@@ -43,10 +45,10 @@ export default {
         'Суббота'
     ],
 
-    getDefaultCity(id) {
+    getDefaultCity() {
         if ( !Cookies.get('city_id') ) {
-            Cookies.set('city_id', id)
-            return id
+            Cookies.set('city_id', defaultCityId)
+            return defaultCityId
         }
 
         return Number(Cookies.get('city_id'));

@@ -1,16 +1,12 @@
 import setTimeParameter from './app/Date'
 import changeCity from './app/ChangeCity'
-import Cookies from 'js-cookie'
 
 import { templateWeather } from './app/TemplateWeather'
-import { CalculationProgress, CalculationMinutes } from './app/Utils'
+import { CalculationProgress } from './app/Utils'
 
 const loader = document.querySelector('.weatherWidget__loader');
 const content = document.querySelector('.weatherWidget__content');
 const progress = document.querySelector('.weatherWidget__progress');
-const minutes = document.querySelector('.weatherWidget_minutes');
-
-const Default_City_ID = 18;
 
 const getTemplateWeather = async () => {
 	await templateWeather()
@@ -24,7 +20,6 @@ const getTemplateWeather = async () => {
 window.addEventListener('load', (e) => {
 	const time = document.querySelector('time');
 	const day = document.querySelector('.Day');
-
 
 	getTemplateWeather().then( ()=> {
 		setTimeParameter.init(time, day);
@@ -47,7 +42,6 @@ window.addEventListener('load', (e) => {
 		}
 
 		progress.style.cssText = `width: ${CalculationProgress(date.getMinutes().toString())}%`;
-		minutes.innerHTML = `${CalculationMinutes(date.getMinutes().toString())}`
 
 	}, 1000);
 
