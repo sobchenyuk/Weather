@@ -4,7 +4,7 @@ import { installationUpdateWeather } from './Utils'
 
 const getDataParams = async params => {
 
-    const url = 'http://api.openweathermap.org/data/2.5/group';
+    const url = '//api.openweathermap.org/data/2.5/group';
 
     let { data: { list:data } } =  await axios.get(url, {
         params  : {
