@@ -41,8 +41,8 @@ export const generated = async data => {
     t.innerHTML = description.toUpperCase();
     i.src = `//openweathermap.org/img/wn/${icon}@2x.png`;
 
-    temp.innerHTML = temperature;
-    feel.innerHTML = feels_like;
+    temp.innerHTML = Math.ceil(temperature);
+    feel.innerHTML = Math.ceil(feels_like);
     h.innerHTML = humidity;
 };
 
