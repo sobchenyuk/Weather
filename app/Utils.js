@@ -60,6 +60,6 @@ export const installationUpdateWeather = async ( id, localStorageParams = null )
     await generated(currentCityObg).then( () => {
         const cardTitle = document.querySelector('.card-title');
 
-        cardTitle.innerHTML = `Погода в ${name}`
+        cardTitle.innerHTML = `Погода ${name}`
     })
 };

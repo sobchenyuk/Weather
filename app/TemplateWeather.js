@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {key_api, arrCity, getDefaultCity} from "./constant";
+import { key_api, arrCity, getDefaultCity } from "./constant";
 import { installationUpdateWeather } from './Utils'
 
 const getDataParams = async params => {
@@ -29,7 +29,7 @@ const initRequestParams = async () => {
         subarray[i] = arr.slice((i*size), (i*size) + size).join(',');
     }
 
-    await subarray.forEach( elem => {
+    subarray.forEach( elem => {
          getDataParams(elem).then( res => {
             for ( let item of res ) {
                 arrayRequest.push(item)
@@ -37,21 +37,20 @@ const initRequestParams = async () => {
         });
     });
 
-    return arrayRequest;
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(arrayRequest), 500)
+    });
 };
 
 export const templateWeather = async () => {
 
     try {
 
-        await initRequestParams().then( res => {
-            setTimeout(() => {
-                localStorage.setItem('arrayRequest', JSON.stringify(res));
+        const res = await initRequestParams()
 
-                installationUpdateWeather(getDefaultCity(), res)
+        await localStorage.setItem('arrayRequest', JSON.stringify(res));
 
-            }, 500);
-        })
+        await installationUpdateWeather(getDefaultCity(), res)
 
     } catch (e) {
         console.log(e);

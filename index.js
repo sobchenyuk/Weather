@@ -10,18 +10,24 @@ const progress = document.querySelector('.weatherWidget__progress');
 
 const getTemplateWeather = async () => {
 	await templateWeather()
-		.then(()=> {
+
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve('loads')
+
 			loader.classList.contains('fadein') && loader.classList.remove('fadein');
 			loader.style.display = 'none';
 			content.style.opacity = '1';
-		});
+		}, 100)
+	});
 };
 
 window.addEventListener('load', (e) => {
 	const time = document.querySelector('time');
 	const day = document.querySelector('.Day');
 
-	getTemplateWeather().then( ()=> {
+	getTemplateWeather()
+		.then( ()=> {
 		setTimeParameter.init(time, day);
 
 		changeCity.init();

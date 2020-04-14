@@ -14,7 +14,10 @@ class ChangeCity {
         try {
             await this.createOptions(this._select);
             const { el:select } = await window.M.FormSelect.init(this._select);
-            return select;
+
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve(select), 100)
+            });
         } catch (err) {
             console.log(err)
         }
@@ -47,11 +50,11 @@ class ChangeCity {
         }
     }
 
-    init() {
-        this.getMaterialSelect()
-            .then( res => {
-                res.addEventListener('change', this.onChangeSelect)
-            });
+    async init() {
+
+        const select = await this.getMaterialSelect()
+
+        await select.addEventListener('change', this.onChangeSelect)
     }
 }
 
